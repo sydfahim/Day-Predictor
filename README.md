@@ -4,8 +4,7 @@ Ever wondered *what day tomorrow will be*?
 Tired of calendars? So last century.  
 Let the **Day Predictor** do the cosmic math for you — with 100% guaranteed accuracy\*.
 
-![Screenshot](screenshot.png)
-
+![Screenshot](screenshot1.png)
 ---
 
 ## 🚀 Features
