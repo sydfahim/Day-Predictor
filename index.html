@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Day Predictor</h1>
+            <p class="subtitle">Discover what day tomorrow will be</p>
+        </div>
+
+        <div id="initial-state">
+            <button class="predict-btn" onclick="predictTomorrow()">
+                Predict Tomorrow
+            </button>
+        </div>
+
+        <div id="loading-state" class="loading-container">
+            <div class="spinner"></div>
+            <p class="loading-text">Consulting the cosmic calendar...</p>
+            <div class="loading-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+
+        <div id="result-state" class="result-container">
+            <div class="result-box">
+                <h2 class="result-title">🔮 Prediction Revealed!</h2>
+                <p class="result-day" id="predicted-day"></p>
+            </div>
+            <p class="mystical-quote">
+                "The ancient algorithms have spoken..."
+            </p>
+            <button class="reset-btn" onclick="reset()">
+                Predict Again
+            </button>
+        </div>
+
+        <div class="disclaimer">
+            <p class="disclaimer-main">
+                ✨ 100% Accuracy Guaranteed* ✨
+            </p>
+            <p class="disclaimer-sub">
+                *Results may vary in alternate dimensions
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        
+        function predictTomorrow() {
+            // Hide initial state
+            document.getElementById('initial-state').style.display = 'none';
+            
+            // Show loading state
+            const loadingState = document.getElementById('loading-state');
+            loadingState.style.display = 'flex';
+            
+            // Calculate tomorrow's day
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1);
+            const tomorrowDay = days[tomorrow.getDay()];
+            
+            // Add suspense with a delay
+            setTimeout(() => {
+                // Hide loading state
+                loadingState.style.display = 'none';
+                
+                // Show result
+                document.getElementById('predicted-day').textContent = tomorrowDay;
+                document.getElementById('result-state').style.display = 'block';
+            }, 2000);
+        }
+        
+        function reset() {
+            // Hide result state
+            document.getElementById('result-state').style.display = 'none';
+            
+            // Show initial state
+            document.getElementById('initial-state').style.display = 'block';
+            
+            // Clear the prediction
+            document.getElementById('predicted-day').textContent = '';
+        }
+    </script>
+</body>
+</html>
